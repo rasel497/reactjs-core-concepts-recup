@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   return (
     <div className="App">
+      <LoadPosts></LoadPosts>
       <District name="Noyakhali" speciality="vebag"></District>
       <District name="Chandpur" speciality="jilaa"></District>
       <District name="Dhaka" speciality="rajdhani"></District>
@@ -13,6 +14,24 @@ function App() {
   );
 }
 
+// 01---expmple:
+function LoadPosts() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(res => res.json())
+      .then(data => setPosts(data));
+  }, [])
+
+  return (
+    <div>
+      <h1>Posts: {posts.length}</h1>
+    </div>
+  )
+}
+
+// 01---expmple:
 // using css style in variable
 const districtStyle = {
   backgroundColor: 'yellow',
@@ -29,7 +48,7 @@ function District(props) {
   const bootsPower = () => {
     const newPower = power - 10;
     if (newPower < 10) {
-      return alert('Recharge you phone');
+      return alert('Battery is low! Recharge you phone.');
     }
     setPower(newPower);
   }
