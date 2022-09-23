@@ -11,10 +11,17 @@ function App() {
   );
 }
 
+// using css style in variable
+const districtStyle = {
+  backgroundColor: 'yellow',
+  margin: '20px',
+  borderRadius: '20px'
+}
+
 // create a bsic Componant and css style
 function District() {
   return (
-    <div className='district'>
+    <div style={districtStyle}>
       <h1>Name: </h1>
       <p>Speciality: </p>
     </div>
