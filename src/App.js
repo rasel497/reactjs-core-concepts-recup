@@ -24,10 +24,13 @@ const districtStyle = {
 // create a bsic Componant and css style
 function District(props) {
   // create state and destructuring
-  const [power, setPower] = useState(1);
+  const [power, setPower] = useState(100);
 
   const bootsPower = () => {
-    const newPower = power * 2;
+    const newPower = power - 10;
+    if (newPower < 10) {
+      return alert('Recharge you phone');
+    }
     setPower(newPower);
   }
 
